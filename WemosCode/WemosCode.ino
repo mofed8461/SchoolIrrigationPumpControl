@@ -42,7 +42,7 @@ void setup() {
 float readHumidity()
 {
   float h = 0;
-  digitalWrite(sensorSourcePin, 1);
+  digitalWrite(sensorSourcePin, 0);
   delay(200);
   for (int i = 0; i < SAMPLES; ++i)
   {
@@ -58,7 +58,7 @@ float readHumidity()
 float readTemp()
 {
   float t = 0;
-  digitalWrite(sensorSourcePin, 0);
+  digitalWrite(sensorSourcePin, 1);
   delay(200);
   for (int i = 0; i < SAMPLES; ++i)
   {
@@ -77,7 +77,7 @@ float readTemp()
 
 void loop() {
 
-  digitalWrite(pumpPin, pumpState);
+  digitalWrite(pumpPin, !pumpState);
   WiFiClient client = server.available();
   if (!client) {
     return;
